@@ -1,0 +1,18 @@
+$primary: #1e5eff;
+$primary-dark: #1749c7;
+$sidebar: #111827;
+$bg: #f3f5f9;
+$text: #1f2937;
+$muted: #6b7280;
+$border: #e5e7eb;
+$danger: #dc2626;
+$success: #16a34a;
+$warning: #f59e0b;
+$radius: 10px;
+$bp-md: 768px;
+
+@mixin mobile {
+  @media (max-width: $bp-md) {
+    @content;
+  }
+}

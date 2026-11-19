@@ -1,0 +1,32 @@
+<div class="shell">
+  <header class="topbar">
+    <button class="burger" (click)="alternarMenu()" aria-label="Abrir menú">☰</button>
+    <span class="topbar-title">🚛 FleetCare</span>
+  </header>
+
+  <aside class="sidebar" [class.abierto]="menuAbierto()">
+    <div class="sidebar-brand">🚛 FleetCare</div>
+
+    <nav>
+      @for (item of menu(); track item.ruta) {
+        <a [routerLink]="item.ruta" routerLinkActive="activo" (click)="cerrarMenu()">
+          <span>{{ item.icono }}</span> {{ item.etiqueta }}
+        </a>
+      }
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-name">{{ auth.username() }}</div>
+      <div class="user-rol">{{ auth.rol() }}</div>
+      <button class="btn btn-secondary" (click)="auth.logout()">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  @if (menuAbierto()) {
+    <div class="overlay" (click)="cerrarMenu()"></div>
+  }
+
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>

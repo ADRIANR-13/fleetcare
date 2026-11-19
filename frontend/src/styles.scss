@@ -1,0 +1,263 @@
+@use './styles/variables' as *;
+
+:root {
+  --primary: #{$primary};
+  --primary-dark: #{$primary-dark};
+  --sidebar: #{$sidebar};
+  --bg: #{$bg};
+  --text: #{$text};
+  --muted: #{$muted};
+  --border: #{$border};
+  --danger: #{$danger};
+  --success: #{$success};
+  --warning: #{$warning};
+  --radius: #{$radius};
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: $bg;
+  color: $text;
+}
+
+h1, h2, h3 {
+  margin: 0 0 0.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: $radius;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+.form-control {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid $border;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+
+  &:focus {
+    outline: 2px solid rgba($primary, 0.3);
+    border-color: $primary;
+  }
+
+  &.invalid {
+    border-color: $danger;
+  }
+}
+
+.error-text {
+  color: $danger;
+  font-size: 0.8rem;
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: $primary;
+  color: #fff;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.btn-secondary {
+    background: #e5e7eb;
+    color: $text;
+  }
+
+  &.btn-danger {
+    background: $danger;
+    color: #fff;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    text-align: left;
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid $border;
+    font-size: 0.9rem;
+  }
+
+  th {
+    background: #f9fafb;
+    font-weight: 600;
+  }
+}
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.muted {
+  color: $muted;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  span {
+    color: $muted;
+    font-size: 0.85rem;
+  }
+
+  strong {
+    font-size: 1.6rem;
+  }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1rem;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: $text;
+
+  &[data-v='OPERATIVO'],
+  &[data-v='COMPLETADO'],
+  &[data-v='BAJA'],
+  &[data-v='PREVENTIVO'] {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  &[data-v='EN_MANTENIMIENTO'],
+  &[data-v='EN_PROCESO'],
+  &[data-v='MEDIA'],
+  &[data-v='PROGRAMADO'] {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  &[data-v='FUERA_DE_SERVICIO'],
+  &[data-v='ALTA'],
+  &[data-v='CORRECTIVO'] {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+
+  div span {
+    display: block;
+    color: $muted;
+    font-size: 0.8rem;
+  }
+}
+
+.mt {
+  margin-top: 1rem;
+}
