@@ -1,0 +1,14 @@
+# Backend Spring Boot
+demo/target/
+demo/.idea/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Archivos privados
+.env
+**/.env
+
+# Visual Studio Code
+.vscode/
